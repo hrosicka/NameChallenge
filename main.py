@@ -61,15 +61,23 @@ class NameChallenge:
 
     def get_gender(self, name):
         """Gets the gender of a name using the genderize.io API."""
-        response = requests.get(f"https://api.genderize.io?name={name}")
-        data = response.json()
-        return data['gender']
+        try:
+            response = requests.get(f"https://api.genderize.io?name={name}")
+            data = response.json()
+            return data['gender']
+        except requests.exceptions.RequestException as e:
+            print(f"Error retrieving gender: {e}")
+            return None  # Or display an error message to the user
     
     def get_probability(self, name):
-        """Gets the gender of a name using the genderize.io API."""
-        response = requests.get(f"https://api.genderize.io?name={name}")
-        data = response.json()
-        return data['probability']
+        """Gets the probability of a name using the genderize.io API."""
+        try:
+            response = requests.get(f"https://api.genderize.io?name={name}")
+            data = response.json()
+            return data['probability']
+        except requests.exceptions.RequestException as e:
+            print(f"Error retrieving gender: {e}")
+            return None  # Or display an error message to the user
 
     def check_answer(self):
         """Checks if the user guessed the correct gender."""
