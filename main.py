@@ -101,5 +101,14 @@ class NameChallenge:
         """Updates the success statistics."""
         self.stats_label['text'] = f"Correct: {self.correct_answers} / {self.total_answers}"
 
+    def load_names_from_file(self, filename):
+        try:
+            with open(filename, "r") as file:
+                names = [line.strip() for line in file]
+            return names
+        except FileNotFoundError:
+            print(f"Error loading names file: {filename}")
+            return []
+
 # Create an instance of the game
 game = NameChallenge()
