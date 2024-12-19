@@ -2,16 +2,14 @@ from ctypes import windll
 windll.shcore.SetProcessDpiAwareness(1)
 
 import tkinter as tk
-import requests
-import random
 
-class NameChallenge:
+
+from name_challenge_logic import NameChallenge
+
+class NameChallengeGUI:
     def __init__(self):
-        # Initialize variables
-        self.correct_answers = 0
-        self.total_answers = 0
-        self.names = ["Anna", "Jan", "Tereza", "Martin", "Hana", "Adéla", "Adriana",
-                      "Adam", "Alina", "Aleš", "Nicol", "Nikola", "Alex"]  # Example names
+
+        self.game = NameChallenge()
 
         # Create the main window
         self.root = tk.Tk()
@@ -59,47 +57,21 @@ class NameChallenge:
         else:
             self.check_button.config(state=tk.DISABLED)
 
-    def get_gender(self, name):
-        """Gets the gender of a name using the genderize.io API."""
-        try:
-            response = requests.get(f"https://api.genderize.io?name={name}")
-            data = response.json()
-            return data['gender']
-        except requests.exceptions.RequestException as e:
-            print(f"Error retrieving gender: {e}")
-            return None  # Or display an error message to the user
-    
-    def get_probability(self, name):
-        """Gets the probability of a name using the genderize.io API."""
-        try:
-            response = requests.get(f"https://api.genderize.io?name={name}")
-            data = response.json()
-            return data['probability']
-        except requests.exceptions.RequestException as e:
-            print(f"Error retrieving gender: {e}")
-            return None  # Or display an error message to the user
-
     def check_answer(self):
         """Checks if the user guessed the correct gender."""
         user_answer = self.gender_var.get()
-        actual_gender = self.get_gender(self.name_label['text'])
-        if user_answer == actual_gender:
-            self.result_label['text'] = "Correct!"
-            self.correct_answers += 1
-        else:
-            self.result_label['text'] = f"Incorrect! It was {actual_gender}."
-            self.total_answers += 1
-        self.update_stats()
+        name = self.name_label['text']
+        result = self.game.check_answer(user_answer, name)
+        self.result_label["text"] = result
+        self.game.update_stats()
+        # Update stats label
 
     def new_name(self):
         """Generates a new random name and updates the GUI."""
-        name = random.choice(self.names)
+        name = self.game.new_name()
         self.name_label['text'] = name
         self.gender_var.set("none")
 
-    def update_stats(self):
-        """Updates the success statistics."""
-        self.stats_label['text'] = f"Correct: {self.correct_answers} / {self.total_answers}"
 
     def load_names_from_file(self, filename):
         try:
@@ -111,4 +83,4 @@ class NameChallenge:
             return []
 
 # Create an instance of the game
-game = NameChallenge()
+game = NameChallengeGUI()
