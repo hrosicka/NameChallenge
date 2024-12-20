@@ -17,7 +17,7 @@ class NameChallengeGUI:
         self.root.title("Guess the Gender")
 
         self.root.resizable(False, False) 
-        self.root.geometry("480x280")
+        self.root.geometry("480x380")
 
         self.work_frame = tk.Frame(self.root)
         self.work_frame.pack(side=tk.LEFT, padx=40, pady=20)
@@ -117,8 +117,8 @@ class NameChallengeGUI:
         name = self.name_label['text']
         result = self.game.check_answer(user_answer, name)
         self.result_label["text"] = result
-        self.game.update_stats()
-        # Update stats label
+        stat = self.game.update_stats()
+        self.stats_label["text"] = stat
 
     def new_name(self):
         """Generates a new random name and updates the GUI."""
