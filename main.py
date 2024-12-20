@@ -2,6 +2,7 @@ from ctypes import windll
 windll.shcore.SetProcessDpiAwareness(1)
 
 import tkinter as tk
+import customtkinter
 
 
 from name_challenge_logic import NameChallenge
@@ -15,6 +16,9 @@ class NameChallengeGUI:
         self.root = tk.Tk()
         self.root.title("Guess the Gender")
 
+        self.root.resizable(False, False) 
+        self.root.geometry("680x280")
+
         # Create GUI elements
         self.name_label = tk.Label(self.root, text="...", font=("Arial", 16))
         self.name_label.pack(pady=20)
@@ -27,11 +31,23 @@ class NameChallengeGUI:
         self.female_button = tk.Radiobutton(self.root, text="Female", variable=self.gender_var, value="female")
         self.female_button.pack()
 
-        self.check_button = tk.Button(self.root, text="Check", command=self.check_answer)
+        # Create a frame to hold the buttons
+        self.button_frame = tk.Frame(self.root)
+        self.button_frame.pack(side=tk.RIGHT, padx=20, pady=20)
+
+        self.check_button = customtkinter.CTkButton(self.button_frame,
+                                                    text="Check",
+                                                    command=self.check_answer,
+                                                    width=120,
+                                                    text_color="white",
+                                                    fg_color="#00436C",
+                                                    hover_color="#9C4D30",
+                                                    corner_radius=0)
+
         self.check_button.pack(pady=10)
 
         # Inicializace stavu tlačítka
-        self.check_button.config(state=tk.DISABLED)
+        self.check_button.configure(state=tk.DISABLED)
 
         # Připojení funkce k proměnné gender_var
         self.gender_var.trace_add("write", lambda *args: self.update_button_state())
@@ -42,7 +58,15 @@ class NameChallengeGUI:
         self.stats_label = tk.Label(self.root, text="")
         self.stats_label.pack()
 
-        self.new_name_button = tk.Button(self.root, text="New Name", command=self.new_name)
+        self.new_name_button = customtkinter.CTkButton(self.button_frame,
+                                                        text="New name",
+                                                        command=self.new_name,
+                                                        width=120,
+                                                        text_color="white",
+                                                        fg_color="#00436C",
+                                                        hover_color="#9C4D30",
+                                                        corner_radius=0)
+        
         self.new_name_button.pack()
 
         # Start the game
@@ -53,9 +77,9 @@ class NameChallengeGUI:
     # Funkce pro aktualizaci stavu tlačítka
     def update_button_state(self):
         if self.gender_var.get() in ["male", "female"]:
-            self.check_button.config(state=tk.NORMAL)
+            self.check_button.configure(state=tk.NORMAL)
         else:
-            self.check_button.config(state=tk.DISABLED)
+            self.check_button.configure(state=tk.DISABLED)
 
     def check_answer(self):
         """Checks if the user guessed the correct gender."""
