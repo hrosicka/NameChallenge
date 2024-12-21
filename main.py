@@ -4,7 +4,7 @@ windll.shcore.SetProcessDpiAwareness(1)
 import tkinter as tk
 import customtkinter
 from CTkMessagebox import CTkMessagebox
-
+from tkinter import filedialog
 
 from name_challenge_logic import NameChallenge
 
@@ -97,6 +97,17 @@ class NameChallengeGUI:
     
         self.new_data_button.pack(pady=10)
 
+
+        self.choose_file_button = customtkinter.CTkButton(self.button_frame,
+                                                        text="Choose file",
+                                                        command=self.choose_file,
+                                                        width=120,
+                                                        text_color="white",
+                                                        fg_color="#00436C",
+                                                        hover_color="#9C4D30")
+    
+        self.choose_file_button.pack(pady=10)
+
         # Start the game
         self.new_name()
         self.root.mainloop()
@@ -158,6 +169,50 @@ class NameChallengeGUI:
                           icon_size=(30,30),
                           corner_radius=0,)
             return []
+        
+    def choose_file(self):
+        """Opens a file dialog for the user to select a file and loads the names from it.
+
+        Handles potential errors during file selection and loading.
+        """
+
+        try:
+            # Open file dialog and get the selected file path
+            file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+
+            if file_path:
+                # Load names from the file using your existing logic (assuming it's in load_names_from_file)
+                names = self.load_names_from_file(file_path)
+                self.game.names = names  # Update game names
+
+        except (FileNotFoundError, PermissionError) as e:
+            # Handle specific errors like file not found or permission issues
+            CTkMessagebox(
+                title="Error",
+                message=f"An error occurred: {str(e)}",
+                icon="cancel",
+                width=200,
+                height=150,
+                button_color="#00436C",
+                button_hover_color="#9C4D30",
+                icon_size=(30, 30),
+                corner_radius=0,
+            )
+
+        except Exception as e:
+            # Catch any other unexpected errors
+            CTkMessagebox(
+                title="Error",
+                message="An unexpected error occurred!",
+                icon="cancel",
+                width=200,
+                height=150,
+                button_color="#00436C",
+                button_hover_color="#9C4D30",
+                icon_size=(30, 30),
+                corner_radius=0,
+            )
+
 
 # Create an instance of the game
 game = NameChallengeGUI()
