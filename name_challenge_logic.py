@@ -7,7 +7,6 @@ class NameChallenge:
         # Initialize variables
         self.correct_answers = 0
         self.total_answers = 0
-        # self.names = self.load_names_from_file("names.txt")  # Assuming names.txt exists
         self.names = ["Anna", "Jan", "Tereza", "Martin", "Hana", "Adéla", "Adriana",
                       "Adam", "Alina", "Aleš", "Nicol", "Nikola", "Alex"]  # Example names
     

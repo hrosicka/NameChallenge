@@ -3,6 +3,7 @@ windll.shcore.SetProcessDpiAwareness(1)
 
 import tkinter as tk
 import customtkinter
+from CTkMessagebox import CTkMessagebox
 
 
 from name_challenge_logic import NameChallenge
@@ -61,8 +62,7 @@ class NameChallengeGUI:
                                                     width=120,
                                                     text_color="white",
                                                     fg_color="#00436C",
-                                                    hover_color="#9C4D30",
-                                                    corner_radius=0)
+                                                    hover_color="#9C4D30")
 
         self.check_button.pack(pady=10)
 
@@ -84,18 +84,16 @@ class NameChallengeGUI:
                                                         width=120,
                                                         text_color="white",
                                                         fg_color="#00436C",
-                                                        hover_color="#9C4D30",
-                                                        corner_radius=0)
+                                                        hover_color="#9C4D30")
         self.new_name_button.pack(pady=10)
         
         self.new_data_button = customtkinter.CTkButton(self.button_frame,
                                                         text="Load data from file",
-                                                        command=self.new_name,
+                                                        command=lambda: self.load_names_from_file("names.txt"),
                                                         width=120,
                                                         text_color="white",
                                                         fg_color="#00436C",
-                                                        hover_color="#9C4D30",
-                                                        corner_radius=0)
+                                                        hover_color="#9C4D30")
     
         self.new_data_button.pack(pady=10)
 
@@ -128,12 +126,37 @@ class NameChallengeGUI:
 
 
     def load_names_from_file(self, filename):
+        """
+        Loads names from a specified file.
+
+        Args:
+            filename (str): Path to the file containing names.
+
+        Returns:
+            list: List of names read from the file, or an empty list if an error occurs.
+        """
         try:
             with open(filename, "r") as file:
                 names = [line.strip() for line in file]
-            return names
+                self.game.names = names
+                return names
         except FileNotFoundError:
-            print(f"Error loading names file: {filename}")
+            CTkMessagebox(title="Error", message="File not found!!", icon="cancel",
+                          width=200,
+                          height=150,
+                          button_color="#00436C",
+                          button_hover_color="#9C4D30",
+                          icon_size=(30,30),
+                          corner_radius=0,)
+            return []
+        except Exception as e:
+            CTkMessagebox(title="Error", message="An unexpected error occurred!!", icon="cancel",
+                          width=200,
+                          height=150,
+                          button_color="#00436C",
+                          button_hover_color="#9C4D30",
+                          icon_size=(30,30),
+                          corner_radius=0,)
             return []
 
 # Create an instance of the game
