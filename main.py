@@ -9,8 +9,35 @@ from tkinter import filedialog
 from name_challenge_logic import NameChallenge
 
 class NameChallengeGUI:
-    def __init__(self):
+    """
+    This class represents the graphical user interface (GUI) for the name challenge game.
+    It handles creating the main window, displaying game elements, interacting with the game logic,
+    and processing user input.
+    """
 
+    def __init__(self):
+        """
+        Initializes the GUI window and its elements.
+
+        - Sets the window title to "Guess the Gender".
+        - Disables resizing behavior for a fixed window size.
+        - Sets the window geometry to 480x380 pixels.
+        - Creates frames to organize the layout of UI elements (work and button frames).
+        - Creates a label to display the name for the user to guess.
+        - Initializes a string variable to store the user's selected gender ("male", "female", or "none").
+        - Creates radio buttons for the user to select the gender ("Male" and "Female").
+        - Creates a button with the text "Check" to trigger the answer check.
+        - Disables the "Check" button initially until a gender selection is made.
+        - Connects the `update_button_state` function to changes in the gender selection variable.
+        - Creates labels to display the result of the guess and game statistics.
+        - Creates buttons with the text "New name" to generate a new name,
+          "Load data from file" to load names from a text file, and
+          "Choose file" to open a file dialog for name selection.
+        - Starts a new game by calling the `new_name` function.
+        - Starts the main event loop of the tkinter application.
+        """
+
+        # Create an instance of the game logic
         self.game = NameChallenge()
 
         # Create the main window
@@ -66,10 +93,8 @@ class NameChallengeGUI:
 
         self.check_button.pack(pady=10)
 
-        # Inicializace stavu tlačítka
         self.check_button.configure(state=tk.DISABLED)
 
-        # Připojení funkce k proměnné gender_var
         self.gender_var.trace_add("write", lambda *args: self.update_button_state())
 
         self.result_label = tk.Label(self.work_frame, text="")
@@ -112,16 +137,15 @@ class NameChallengeGUI:
         self.new_name()
         self.root.mainloop()
 
-
-    # Funkce pro aktualizaci stavu tlačítka
     def update_button_state(self):
+        """Updates the state of the 'Check' button based on gender selection."""
         if self.gender_var.get() in ["male", "female"]:
             self.check_button.configure(state=tk.NORMAL)
         else:
             self.check_button.configure(state=tk.DISABLED)
 
     def check_answer(self):
-        """Checks if the user guessed the correct gender."""
+        """Checks if the user guessed the correct gender and updates the result and stats labels."""
         user_answer = self.gender_var.get()
         name = self.name_label['text']
         result = self.game.check_answer(user_answer, name)
