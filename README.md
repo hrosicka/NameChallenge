@@ -1,4 +1,10 @@
 # Guess the Gender
+
+![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue?logo=python)
+![Last Commit](https://img.shields.io/github/last-commit/hrosicka/NameChallenge?logo=git&color=orange)
+![Name Genius](https://img.shields.io/badge/Name%20Genius-100%25-brightgreen?style=flat-square&logo=star&logoColor=yellow)
+![License](https://img.shields.io/github/license/hrosicka/NameChallenge?color=informational)
+
 Welcome to Guess the Gender, a game that will test your intuition and knowledge of names!
 
 This guide will walk you through the exciting world of name sleuthing and becoming a master guesser. ️‍♀️ ️‍♂️
