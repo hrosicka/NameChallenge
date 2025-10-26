@@ -14,8 +14,14 @@ This guide will walk you through the exciting world of name sleuthing and becomi
 The game will present you with a name on the screen. Your mission is to guess the gender associated with that name.
 
 ## Making Your Choice
-Radio Buttons: - Click on the "Male" or "Female" button to indicate your guess.
+**Radio Buttons:** - Click on the "Male" or "Female" button to indicate your guess.
 
-Pro Tip: Pay attention to cultural origin, common name endings, and even intuition to make an informed guess!
+**Pro Tip:** Pay attention to cultural origin, common name endings, and even intuition to make an informed guess!
 
-Check Button (initially disabled): - Once you've selected a gender, the "Check" button will become active. Click this button to see if you've cracked the code!
+**Check Button (initially disabled):** - Once you've selected a gender, the "Check" button will become active. Click this button to see if you've cracked the code!
+
+## Author
+Lovingly crafted by [Hanka Robovska](https://github.com/hrosicka)
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details. Free to use, modify, and distribute as needed.
