@@ -47,16 +47,28 @@ A small interactive desktop game that challenges the user to guess the gender as
 
 ---
 
+## Usage
 
-## The Name's the Game
-The game will present you with a name on the screen. Your mission is to guess the gender associated with that name.
+1. Clone the repository:
+   ```
+   git clone https://github.com/hrosicka/NameChallenge.git
+   cd NameChallenge
+   ```
 
-## Making Your Choice
-**Radio Buttons:** - Click on the "Male" or "Female" button to indicate your guess.
+2. Run the GUI:
+   ```
+   python main.py
+   ```
 
-**Pro Tip:** Pay attention to cultural origin, common name endings, and even intuition to make an informed guess!
+3. In the GUI:
+   - Click "New name" (or equivalent button) to get a new random name.
+   - Select male/female and click "Check" to verify your guess.
+   - Use the "Load file" / "Choose file" button to load a custom list of names (one per line).
 
-**Check Button (initially disabled):** - Once you've selected a gender, the "Check" button will become active. Click this button to see if you've cracked the code!
+Notes:
+- Default example names are included inside `name_challenge_logic.py`. To use your own names, prepare a simple text file (one name per line) and load it via the GUI.
+
+---
 
 ## Author
 Lovingly crafted by [Hanka Robovska](https://github.com/hrosicka)
