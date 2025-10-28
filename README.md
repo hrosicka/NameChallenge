@@ -7,6 +7,17 @@
 
 A small interactive desktop game that challenges the user to guess the gender associated with a given first name. The application is written in Python and uses a GUI based on Tkinter. It queries the free Genderize.io API to guess the likely gender for a name. ️‍♀️ ️‍♂️
 
+---
+
+## Features
+
+- Simple GUI game that displays a name and asks the user to guess the gender (male/female).
+- Uses the Genderize.io API to determine the likely gender for a given name.
+- Keeps basic success statistics (correct / total guesses).
+- Ability to load custom name lists from a file (one name per line).
+- Logic separated into `name_challenge_logic.py` (game logic) and `main.py` (GUI).
+
+---
 
 ## The Name's the Game
 The game will present you with a name on the screen. Your mission is to guess the gender associated with that name.
