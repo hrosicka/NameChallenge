@@ -19,6 +19,35 @@ A small interactive desktop game that challenges the user to guess the gender as
 
 ---
 
+## Requirements
+
+- Python 3.7+ (tested with 3.8+)
+- The `requests` library
+- `tkinter` (usually included with standard Python on Windows/macOS/Linux desktops)
+
+---
+
+## Screenshots
+
+**New name screen**
+
+![New name screen](https://raw.githubusercontent.com/hrosicka/NameChallenge/master/doc/new_name.png)
+
+**Load names from file**
+
+![Load file dialog](https://raw.githubusercontent.com/hrosicka/NameChallenge/master/doc/load_file.png)
+
+**Choose a file to load names**
+
+![Choose file](https://raw.githubusercontent.com/hrosicka/NameChallenge/master/doc/choose_file.png)
+
+**Check answer / result**
+
+![Check name result](https://raw.githubusercontent.com/hrosicka/NameChallenge/master/doc/check_name.png)
+
+---
+
+
 ## The Name's the Game
 The game will present you with a name on the screen. Your mission is to guess the gender associated with that name.
 
