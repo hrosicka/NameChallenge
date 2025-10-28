@@ -70,6 +70,23 @@ Notes:
 
 ---
 
+## Limitations and notes
+
+- Genderize.io is a free public API with rate limits and no guaranteed coverage for all names. It returns probabilistic results, and some names may be ambiguous.
+- No API key is required for basic usage, but heavy use may hit rate limits.
+- The application currently does not store statistics persistently or handle offline operation.
+- The gender detection is based on name frequency data and might fail for uncommon names or cross-cultural usage.
+
+---
+
+## Project structure
+
+- `main.py` — Tkinter GUI
+- `name_challenge_logic.py` — game logic, Genderize.io calls, and name management
+- `doc/` — screenshots and documentation images
+
+---
+
 ## Author
 Lovingly crafted by [Hanka Robovska](https://github.com/hrosicka)
 
