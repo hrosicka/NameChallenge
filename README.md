@@ -1,9 +1,12 @@
 # NameChallenge
 
-![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue?logo=python)
-![Last Commit](https://img.shields.io/github/last-commit/hrosicka/NameChallenge?logo=git&color=orange)
-![Name Genius](https://img.shields.io/badge/Name%20Genius-100%25-brightgreen?style=flat-square&logo=star&logoColor=yellow)
-![License](https://img.shields.io/github/license/hrosicka/NameChallenge?color=informational)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
+[![CustomTkinter](https://img.shields.io/badge/UI-CustomTkinter-00436C?style=for-the-badge)](https://github.com/tomschimansky/CustomTkinter)
+[![API: Genderize.io](https://img.shields.io/badge/API-Genderize.io-orange?style=for-the-badge)](https://genderize.io)
+[![Type: Desktop Game](https://img.shields.io/badge/Type-Desktop%20Game-purple?style=for-the-badge&logo=generic-share)](https://github.com/hrosicka/NameChallenge)
+[![Last Commit](https://img.shields.io/github/last-commit/hrosicka/NameChallenge?style=for-the-badge&logo=git&color=990000)](https://github.com/hrosicka/NameChallenge/commits/master)
+[![Author: Hanka](https://img.shields.io/badge/Author-Hanka%20%F0%9F%91%A9%E2%80%8D%F0%9F%94%AC-deeppink?style=for-the-badge)](https://github.com/hrosicka)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](./LICENSE)
 
 A small interactive desktop game that challenges the user to guess the gender associated with a given first name. The application is written in Python and uses a GUI based on Tkinter. It queries the free Genderize.io API to guess the likely gender for a name. ️‍♀️ ️‍♂️
 
